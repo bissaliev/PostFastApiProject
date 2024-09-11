@@ -1,7 +1,7 @@
 from logging.config import fileConfig
 
 from alembic import context
-from db.database import SQLALCHEMY_DATABASE_URL
+from config import settings
 from db.models import Base
 from sqlalchemy import engine_from_config, pool
 
@@ -24,7 +24,7 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
 
 def run_migrations_offline() -> None:
